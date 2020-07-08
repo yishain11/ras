@@ -1,4 +1,4 @@
-import { Ras } from "./classes/ras.class";
+import  Ras from "./classes/ras.class";
 
 const txt = 'help i need somebody help not just anybody';
 const ras = new Ras();
@@ -14,8 +14,24 @@ const ras = new Ras();
 // const res = ras.matchAll(txt, 'letters');
 // console.log('res', res)
 
+// // with parse
+// const res = ras.parse('match all letters',txt);
+// console.log('res', res)
+
 // match all intigers
-const res = ras.matchAll(txt,'intigers')
+// const res = ras.matchAll(txt,'intigers')
+// console.log('res', res)
+
+// with parse
+// const res = ras.parse('match all intigers',txt);
+// console.log('res', res)
+
+// match all spcaes - number
+// const res = ras.matchAll(txt, 'spaces', {numOfMatches: true})
+// console.log('res', res)
+
+// with parse
+const res = ras.parse('match all spaces',txt, {numOfMatches: true});
 console.log('res', res)
 
 

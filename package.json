@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register ./tests/**"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/yishain11/ras/issues"
   },
-  "homepage": "https://github.com/yishain11/ras#readme"
+  "homepage": "https://github.com/yishain11/ras#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
+    "ts-node": "^8.10.2"
+  },
+  "dependencies": {
+    "@types/node": "^14.0.19"
+  }
 }

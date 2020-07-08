@@ -1,5 +1,5 @@
 import { MatchOptions } from "./matchOptions.interface";
-export class Ras {
+export default class Ras {
 
     constructor() { }
 
@@ -9,16 +9,19 @@ export class Ras {
             console.log('new RegExp(expToMatch,\'g\')', new RegExp(expToMatch, 'g'))
             return new RegExp(expToMatch, 'g')
         }
-        switch (type) {
-            case 'letters':
-                return /[A-Za-z]/g;
-                break;
-            case 'intigers':
-                return /[0-9]/g;
-                break;
-        
-            default:
-                break;
+        if (rasCommand === 'all'){
+            switch (type) {
+                case 'letters':
+                    return /[A-Za-z]/g;
+                    break;
+                case 'intigers':
+                    return /[0-9]/g;
+                    break;
+                case 'spaces':
+                    return /\s/g;
+                default:
+                    break;
+            }
         }
             
 
@@ -55,6 +58,34 @@ export class Ras {
                 }
                 return matchesInt;
 
+            case 'spaces':
+                const regexSpace = this.createRegex('all', 'spaces')
+                const matchesSpace = sourceText.match(regexSpace)
+                console.log('matchesSpace', matchesSpace)
+                if (options && options.numOfMatches){
+                    const matchNum = matchesSpace.length;
+                    return {matchesInt, matchNum}
+                }
+                return matchesSpace; 
+
+        }
+    }
+
+    parse(rasExpression: string, sourceText:string ,options?: MatchOptions){
+        const rasCommands = rasExpression.split(' ');
+        if (rasCommands[0].toLowerCase() === 'match'){
+            if (rasCommands[1].toLowerCase() === 'all'){
+                const type = rasCommands[2].toLowerCase()
+                const regex = this.createRegex('all', type)
+                const matches = sourceText.match(regex);
+                if (options && options.numOfMatches){
+                    return {
+                        matches,
+                        numOfMatches: matches.length
+                    }
+                }
+                return sourceText.match(regex);
+            }
         }
     }
 }
