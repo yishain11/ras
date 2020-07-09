@@ -1,9 +1,9 @@
 import { MatchOptions } from "./matchOptions.interface";
-export default class Ras {
+export class Ras {
 
     constructor() { }
 
-    createRegex(rasCommand: string, type?:string): RegExp {
+    createRegex(phrase?:string[], rasCommand?: string, type?:string, where?: string): RegExp {
         if (!type){
             const expToMatch = rasCommand.split(' ')[0];
             console.log('new RegExp(expToMatch,\'g\')', new RegExp(expToMatch, 'g'))
@@ -22,6 +22,12 @@ export default class Ras {
                 default:
                     break;
             }
+        }
+        if(where && where === 'before'){
+            if (rasCommand === 'all'){
+                
+            }
+            if (phrase.length)
         }
             
 
@@ -76,7 +82,7 @@ export default class Ras {
         if (rasCommands[0].toLowerCase() === 'match'){
             if (rasCommands[1].toLowerCase() === 'all'){
                 const type = rasCommands[2].toLowerCase()
-                const regex = this.createRegex('all', type)
+                const regex = this.createRegex(null,'all',type)
                 const matches = sourceText.match(regex);
                 if (options && options.numOfMatches){
                     return {
@@ -85,6 +91,13 @@ export default class Ras {
                     }
                 }
                 return sourceText.match(regex);
+            }
+            const phrase = rasCommands[1];
+            const condition = rasCommands[2]
+            const phrase2 = rasCommands[3]
+            const where = rasCommands[4];
+            if (where === 'before' && condition === 'have'){
+                this.createRegex([phrase, phrase2],null,null,'before')
             }
         }
     }

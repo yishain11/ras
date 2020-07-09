@@ -1,4 +1,4 @@
-import  Ras from "./classes/ras.class";
+import  {Ras} from "./classes/ras.class";
 
 const txt = 'help i need somebody help not just anybody';
 const ras = new Ras();
@@ -33,6 +33,9 @@ const ras = new Ras();
 // with parse
 const res = ras.parse('match all spaces',txt, {numOfMatches: true});
 console.log('res', res)
+
+
+// match phrase with before
 
 
 // TO DO:
