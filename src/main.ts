@@ -31,11 +31,12 @@ const ras = new Ras();
 // console.log('res', res)
 
 // with parse
-const res = ras.parse('match all spaces',txt, {numOfMatches: true});
+// const res = ras.parse('match all spaces',txt, {numOfMatches: true});
+// console.log('res', res)
+
+const res = ras.parse('match all letters',txt, {numOfMatches: true});
 console.log('res', res)
-
-
-// match phrase with before
+// match phrase has phrase2 before
 
 
 // TO DO:

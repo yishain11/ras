@@ -56,4 +56,35 @@ DEV Log:
             match all Yishai have mr or mrs before and the great after
             match email
             match password have length greater than 8 and 1 lower case and 1 uppercase and 1 special symbol
+
+        Intresting problem: how to parse sql like statment?
+            you don't want to assume exactly how the query will look like, since the user will allways be able to suprise you. You don't want to be to strict and riggid ether.
+        one way is to maps what word/s can come before or after each keyword.
+
+    17.8
+        cont - parsing
+            one way to manage the parsing is to assign special symbols to mark the biggening and the ending of certain phrases. For example, the condition can be marked with {} after "where", adn so you don't need to guess when the condition starts and ends. The downside to this is less SQL syntax and more code like sytanx. Still, I think I will start with such solution, and maybe change it later on.
+            So currently, these are the rules for RAS:
+            1. every quesry must start with "match".
+            2. after "match" a qualifier must come. qulifiers can be:
+                2.1 any
+                2.2 n
+                2.3 all
+            3. after qualifier, there most be a type. a type can be:
+                3.1 letters
+                3.2 spaces
+                3.3 words
+                3.4 specific phrase - "help"/"i need" etc.
+            4. after the type, conditions can be added. There can be none, one or more conditions. A condition is marked by starting with "where" (must). After the "where" there must be curly braces "{}" in which the condition will be specified.
+                4.1 conditions are structed like so:
+                    a. condition starts with "have"/"havn't"
+                    b. condition pharse. same structure as regular phrase - from steps 2 to 3 above.
+            5. after all conditions, there must be ";"
+            6. after the query is done, options can be added in in object. options include:
+                6.1 highlight = return the original text to preform the search on with "*" before and after the matches.
+                6.2 number of matches
+                6.3 return the text - should RAS return the txt at all, or aonly the reults.
+                6.4 showIndices = return the indices of the matches in the original text.
+
+
              
