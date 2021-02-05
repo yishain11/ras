@@ -1,6 +1,6 @@
 import  {Ras} from "./classes/ras.class";
 
-const txt = 'help i need somebody help not just anybody';
+const txt = 'help i need somebody help not just anybody' ;
 const ras = new Ras();
 
 // match simple expression, returns the matched expression from within the tex
@@ -34,7 +34,7 @@ const ras = new Ras();
 // const res = ras.parse('match all spaces',txt, {numOfMatches: true});
 // console.log('res', res)
 
-const res = ras.parse('match all letters',txt, {numOfMatches: true});
+const res = ras.parse('match all words',txt, {numOfMatches: true});
 console.log('res', res)
 // match phrase has phrase2 before
 
